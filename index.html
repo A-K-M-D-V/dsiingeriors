@@ -1,1 +1,1475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DSI Interiors® | Best Interior Designer | Top Interior Designer | Luxury Interior Designer | INDIA</title>
+    <meta name="description" content="Meet DSI Interior, India's leading luxury interior designer. From 3D design to turnkey execution, we craft bespoke interiors tailored to your lifestyle.">
+    <link rel="icon" type="image/png" href="https://dsiinterior.com/wp-content/uploads/2025/08/cropped-cropped-1195329_20230629150757-removebg-preview-1.png">
+    
+    <!-- Premium Luxury Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- React CDN -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #014421;
+            --primary-dark: #001f0f;
+            --gold-accent: #C9A24A;
+            --gold-light: #e6c76f;
+            --gold-dark: #9b7d36;
+            --ivory-white: #F8F5F0;
+            --pearl-white: #fefcf8;
+            --charcoal-gray: #2B2B2B;
+            --charcoal-light: #4a4a4a;
+            --muted-beige: #D6C6B2;
+            --elegant-font: 'Cormorant Garamond', serif;
+            --luxury-font: 'Crimson Text', serif;
+            --body-font: 'Inter', sans-serif;
+        }
+
+        body {
+            font-family: var(--body-font);
+            color: var(--charcoal-gray);
+            background: var(--primary-color);
+            line-height: 1.7;
+            overflow-x: hidden;
+            font-weight: 400;
+            letter-spacing: 0.3px;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(1, 68, 33, 0.95);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            border-bottom: 1px solid rgba(201, 162, 74, 0.3);
+            z-index: 1000;
+            padding: 1rem 0;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 32px rgba(0, 0, 0, 0.2);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+            width: 100%;
+            height: 60px;
+        }
+
+        .logo {
+            font-family: var(--elegant-font);
+            font-size: 2.2rem;
+            font-weight: 600;
+            color: white;
+            text-decoration: none;
+            letter-spacing: -0.5px;
+            display: flex;
+            align-items: center;
+            z-index: 1002;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links li {
+            margin: 0;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: white;
+            font-weight: 500;
+            font-size: 0.95rem;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .nav-links a:hover {
+            color: var(--gold-accent);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--gold-accent), var(--gold-light));
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transform: translateX(-50%);
+            border-radius: 1px;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Mobile Menu Button */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+            padding: 8px;
+            z-index: 1002;
+            position: relative;
+            width: 48px;
+            height: 48px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-menu-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Hamburger Icon */
+        .hamburger {
+            position: relative;
+            width: 24px;
+            height: 18px;
+            margin: auto;
+        }
+
+        .hamburger span {
+            display: block;
+            position: absolute;
+            height: 2px;
+            width: 100%;
+            background: white;
+            border-radius: 1px;
+            opacity: 1;
+            left: 0;
+            transform: rotate(0deg);
+            transition: 0.25s ease-in-out;
+        }
+
+        .hamburger span:nth-child(1) {
+            top: 0px;
+        }
+
+        .hamburger span:nth-child(2) {
+            top: 8px;
+        }
+
+        .hamburger span:nth-child(3) {
+            top: 16px;
+        }
+
+        /* Hamburger to X animation */
+        .mobile-menu-btn.active .hamburger span:nth-child(1) {
+            top: 8px;
+            transform: rotate(135deg);
+        }
+
+        .mobile-menu-btn.active .hamburger span:nth-child(2) {
+            opacity: 0;
+            left: -30px;
+        }
+
+        .mobile-menu-btn.active .hamburger span:nth-child(3) {
+            top: 8px;
+            transform: rotate(-135deg);
+        }
+
+        /* Mobile Menu */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: rgba(1, 68, 33, 0.98);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            z-index: 1001;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-100%);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .mobile-menu.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .mobile-menu-content {
+            text-align: center;
+            width: 100%;
+            padding: 2rem;
+        }
+
+        .mobile-menu ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .mobile-menu li {
+            margin: 0;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .mobile-menu.active li {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .mobile-menu.active li:nth-child(1) { transition-delay: 0.1s; }
+        .mobile-menu.active li:nth-child(2) { transition-delay: 0.2s; }
+        .mobile-menu.active li:nth-child(3) { transition-delay: 0.3s; }
+        .mobile-menu.active li:nth-child(4) { transition-delay: 0.4s; }
+        .mobile-menu.active li:nth-child(5) { transition-delay: 0.5s; }
+
+        .mobile-menu a {
+            color: white;
+            text-decoration: none;
+            font-size: 2rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: block;
+            padding: 1.5rem 2rem;
+            margin: 0.5rem 0;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .mobile-menu a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .mobile-menu a:hover::before {
+            left: 100%;
+        }
+
+        .mobile-menu a:hover {
+            color: var(--gold-accent);
+            background: rgba(255, 255, 255, 0.05);
+            transform: translateX(10px);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-slideshow {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .hero-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0;
+            transition: opacity 2s ease-in-out;
+        }
+
+        .hero-slide.active {
+            opacity: 1;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.6) 0%, rgba(1, 68, 33, 0.4) 100%);
+            z-index: 2;
+        }
+
+        .hero-content {
+            max-width: 90%;
+            z-index: 3;
+            position: relative;
+            padding: 0 1rem;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-family: var(--elegant-font);
+            font-size: 4.5rem;
+            font-weight: 400;
+            margin-bottom: 1.5rem;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s cubic-bezier(0.4, 0, 0.2, 1) 0.5s forwards;
+            letter-spacing: -1px;
+            line-height: 1.1;
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-subtitle {
+            font-family: var(--luxury-font);
+            font-size: 1.8rem;
+            font-weight: 400;
+            margin-bottom: 2.5rem;
+            color: var(--gold-light);
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s cubic-bezier(0.4, 0, 0.2, 1) 0.7s forwards;
+            font-style: italic;
+            letter-spacing: 1px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero-description {
+            font-size: 1.2rem;
+            font-weight: 300;
+            margin-bottom: 3.5rem;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s cubic-bezier(0.4, 0, 0.2, 1) 0.9s forwards;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            letter-spacing: 0.5px;
+            line-height: 1.8;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1.2rem 3rem;
+            background: linear-gradient(135deg, var(--gold-accent) 0%, var(--gold-dark) 100%);
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            border-radius: 50px;
+            border: 2px solid transparent;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s cubic-bezier(0.4, 0, 0.2, 1) 1.1s forwards;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.6s;
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        .cta-button:hover {
+            background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold-accent) 100%);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(201, 162, 74, 0.4);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        /* About Section */
+        .about {
+            padding: 8rem 0;
+            background: var(--primary-color);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section-title {
+            font-family: var(--elegant-font);
+            font-size: 3.5rem;
+            font-weight: 400;
+            text-align: center;
+            margin-bottom: 4rem;
+            color: var(--gold-accent);
+            letter-spacing: -0.5px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--gold-accent), var(--gold-light));
+            border-radius: 2px;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text h3 {
+            font-family: var(--elegant-font);
+            font-size: 2.5rem;
+            font-weight: 400;
+            color: var(--gold-accent);
+            margin-bottom: 2rem;
+            letter-spacing: -0.3px;
+            line-height: 1.2;
+        }
+
+        .about-text p {
+            font-size: 1.15rem;
+            font-weight: 300;
+            margin-bottom: 2rem;
+            color: white;
+            line-height: 1.8;
+            letter-spacing: 0.3px;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 2.5rem 2rem;
+            background: var(--charcoal-gray);
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(201, 162, 74, 0.3);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--gold-accent), var(--gold-light));
+        }
+
+        .stat-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        }
+
+        .stat-number {
+            font-family: var(--elegant-font);
+            font-size: 3rem;
+            color: var(--gold-accent);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            letter-spacing: -1px;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            color: white;
+            margin-top: 0.5rem;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 8rem 0;
+            background: var(--primary-color);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+
+        .service-card {
+            background: var(--charcoal-gray);
+            padding: 3.5rem 2.5rem;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(201, 162, 74, 0.3);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--gold-accent) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 2rem;
+            color: white;
+            font-size: 1.8rem;
+            box-shadow: 0 8px 25px rgba(1, 68, 33, 0.3);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            z-index: 2;
+        }
+
+
+
+        .service-details {
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            margin-top: 1rem;
+        }
+
+
+
+        .service-details ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .service-details li {
+            padding: 0.5rem 0;
+            color: white;
+            font-size: 0.9rem;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .service-details li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--gold-accent);
+            font-weight: bold;
+        }
+
+        .service-card h3 {
+            font-family: var(--elegant-font);
+            font-size: 1.8rem;
+            font-weight: 500;
+            color: var(--gold-accent);
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.2px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .service-card p {
+            color: white;
+        }
+
+        /* Projects Section */
+        .projects {
+            padding: 8rem 0;
+            background: var(--primary-color);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .project-card {
+            background: var(--charcoal-gray);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(201, 162, 74, 0.3);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+
+        .project-image {
+            height: 280px;
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-color) 50%, var(--gold-accent) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.3rem;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at center, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+        }
+
+        .project-info {
+            padding: 2.5rem;
+        }
+
+        .project-info h3 {
+            font-family: var(--elegant-font);
+            font-size: 1.6rem;
+            font-weight: 500;
+            color: var(--gold-accent);
+            margin-bottom: 0.8rem;
+            letter-spacing: -0.2px;
+        }
+
+        .project-info p {
+            color: white;
+        }
+
+        .project-location {
+            color: var(--gold-accent);
+            font-weight: 600;
+            font-size: 0.95rem;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            margin-bottom: 1.2rem;
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            padding: 8rem 0;
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 3rem;
+            border-radius: 20px;
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .testimonial-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(201, 162, 74, 0.1) 100%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .testimonial-card:hover::before {
+            opacity: 1;
+        }
+
+        .testimonial-text {
+            font-size: 1.2rem;
+            font-weight: 300;
+            margin-bottom: 2rem;
+            font-style: italic;
+            line-height: 1.8;
+            letter-spacing: 0.3px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .testimonial-text::before {
+            content: '"';
+            font-family: var(--elegant-font);
+            font-size: 4rem;
+            color: var(--gold-light);
+            position: absolute;
+            top: -20px;
+            left: -10px;
+            opacity: 0.3;
+            z-index: 1;
+        }
+
+        .testimonial-author {
+            color: var(--gold-light);
+            font-weight: 600;
+            font-size: 0.95rem;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--charcoal-gray);
+            color: white;
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            font-family: var(--elegant-font);
+            font-size: 1.8rem;
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+            color: var(--gold-accent);
+            letter-spacing: -0.2px;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #888;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes shimmer {
+            0% {
+                background-position: -200% 0;
+            }
+            100% {
+                background-position: 200% 0;
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Luxury scroll indicator */
+        .scroll-indicator {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--gold-accent), var(--gold-light));
+            transform-origin: left;
+            transform: scaleX(0);
+            z-index: 9999;
+            transition: transform 0.3s ease;
+        }
+
+        /* Responsive Navigation */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .nav-container {
+                padding: 0 1.5rem;
+                height: 60px;
+            }
+
+            .logo {
+                font-size: 1.6rem;
+                flex-shrink: 1;
+                min-width: 0;
+            }
+
+            .logo img {
+                height: 32px !important;
+                margin-right: 8px !important;
+            }
+
+            .navbar {
+                padding: 0.75rem 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nav-container {
+                padding: 0 1rem;
+                height: 56px;
+            }
+
+            .logo {
+                font-size: 1.4rem;
+            }
+
+            .logo img {
+                height: 28px !important;
+                margin-right: 6px !important;
+            }
+
+            .mobile-menu-btn {
+                width: 44px;
+                height: 44px;
+            }
+
+            .hamburger {
+                width: 20px;
+                height: 16px;
+            }
+
+            .mobile-menu a {
+                font-size: 1.8rem;
+                padding: 1.2rem 1.5rem;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .nav-container {
+                padding: 0 0.75rem;
+                height: 52px;
+            }
+
+            .logo {
+                font-size: 1.2rem;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+            }
+
+            .logo img {
+                height: 24px !important;
+                margin-right: 4px !important;
+            }
+
+            .mobile-menu-btn {
+                width: 40px;
+                height: 40px;
+            }
+
+            .hamburger {
+                width: 18px;
+                height: 14px;
+            }
+
+            .mobile-menu a {
+                font-size: 1.6rem;
+                padding: 1rem 1rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                padding: 0 1rem;
+            }
+
+            .hero-content {
+                max-width: 100%;
+                margin-top: 20%;
+                padding: 0 1rem;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+                line-height: 1.2;
+                margin-bottom: 1rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.2rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .hero-description {
+                font-size: 1rem;
+                margin-bottom: 2rem;
+                line-height: 1.6;
+            }
+
+            .cta-button {
+                padding: 1rem 2rem;
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-content {
+                margin-top: 25%;
+                padding: 0 0.5rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+                line-height: 1.1;
+            }
+
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .hero-description {
+                font-size: 0.95rem;
+            }
+
+            .cta-button {
+                padding: 0.9rem 1.5rem;
+                font-size: 0.85rem;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .hero-content {
+                margin-top: 30%;
+                padding: 0 0.25rem;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+
+            .hero-description {
+                font-size: 0.9rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .cta-button {
+                padding: 0.8rem 1.2rem;
+                font-size: 0.8rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .stats {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title {
+                font-size: 2.5rem;
+            }
+
+            .service-card {
+                padding: 2.5rem 1.5rem;
+            }
+
+            .testimonial-card {
+                padding: 2rem;
+            }
+
+            .container {
+                padding: 0 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Luxury scroll indicator -->
+    <div class="scroll-indicator"></div>
+    
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <img src="https://dsiinterior.com/wp-content/uploads/2025/08/cropped-cropped-1195329_20230629150757-removebg-preview-1.png" alt="DSI Interiors Logo" style="height: 40px; margin-right: 10px; vertical-align: middle;">
+                DSI Interiors
+            </a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <button class="mobile-menu-btn" id="mobile-menu-btn" onclick="toggleMobileMenu()">
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobile-menu">
+        <div class="mobile-menu-content">
+            <ul>
+                <li><a href="#home" onclick="closeMobileMenu()">Home</a></li>
+                <li><a href="#about" onclick="closeMobileMenu()">About</a></li>
+                <li><a href="#services" onclick="closeMobileMenu()">Services</a></li>
+                <li><a href="#projects" onclick="closeMobileMenu()">Projects</a></li>
+                <li><a href="#contact" onclick="closeMobileMenu()">Contact</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-slideshow">
+            <div class="hero-slide active" style="background-image: url('https://github.com/AKM-dv/dsiclient/blob/main/BEDROOM%20VIEW%201.jpg?raw=true')"></div>
+            <div class="hero-slide" style="background-image: url('https://github.com/AKM-dv/dsiclient/blob/main/Parents%20Bedroom%20View_01.jpg?raw=true')"></div>
+            <div class="hero-slide" style="background-image: url('https://github.com/AKM-dv/dsiclient/blob/main/WhatsApp%20Image%202025-07-19%20at%2015.32.31%20(1).jpeg?raw=true')"></div>
+            <div class="hero-slide" style="background-image: url('https://github.com/AKM-dv/dsiclient/blob/main/WhatsApp%20Image%202025-07-19%20at%2015.32.34.jpeg?raw=true')"></div>
+            <div class="hero-slide" style="background-image: url('https://github.com/AKM-dv/dsiclient/blob/main/WhatsApp%20Image%202025-07-19%20at%2015.32.35%20(2).jpeg?raw=true')"></div>
+            <div class="hero-slide" style="background-image: url('https://github.com/AKM-dv/dsiclient/blob/main/WhatsApp%20Image%202025-07-19%20at%2015.32.37.jpeg?raw=true')"></div>
+        </div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content" style="margin-top: 7%;">
+            <h1>Crafting Timeless Luxury</h1>
+            <p class="hero-subtitle">Where Vision Meets Artistry</p>
+            <p class="hero-description">DSI Interiors transforms spaces into extraordinary experiences with bespoke design, premium craftsmanship, and 18+ years of expertise in luxury interior design.</p>
+            <a href="#contact" class="cta-button">Start Your Journey</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <h2 class="section-title fade-in">About DSI Interiors</h2>
+            <div class="about-content">
+                <div class="about-text fade-in">
+                    <h3>Leading Luxury Interior Design</h3>
+                    <p>DSI Interiors is one of India's most renowned interior design and furniture manufacturing companies, established in New Delhi. We believe in the core concept of Quality, Style and Luxury.</p>
+                    <p>Under the visionary leadership of Mr. Damodar, with 18+ years of experience, we blend aesthetics, functionality, and innovation into every project, creating spaces that tell stories and evoke emotions.</p>
+                </div>
+                <div class="about-image fade-in">
+                    <div style="height: 400px; background: linear-gradient(45deg, var(--primary-color), var(--gold-accent)); border-radius: 15px; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.2rem;">
+                        Experience Center Preview
+                    </div>
+                </div>
+            </div>
+            
+            <div class="stats fade-in">
+                <div class="stat-item">
+                    <div class="stat-number">18+</div>
+                    <div class="stat-label">Years of Excellence</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">500+</div>
+                    <div class="stat-label">Projects Completed</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">Client Satisfaction</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <h2 class="section-title fade-in">Our Services</h2>
+            <div class="services-grid">
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="currentColor" width="32" height="32">
+                            <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+                        </svg>
+                    </div>
+                    <h3>Turnkey Projects</h3>
+                    <p>Complete interior design solutions from concept to completion with reliable sourcing and project management.</p>
+                    <div class="service-details">
+                        <ul>
+                            <li>End-to-end project management</li>
+                            <li>Reliable sourcing & procurement</li>
+                            <li>Quality assurance & timely delivery</li>
+                            <li>Single point of contact</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="currentColor" width="32" height="32">
+                            <path d="M7 11h2v2H7zm0 4h2v2H7zm4-4h2v2h-2zm0 4h2v2h-2zm4-4h2v2h-2zm0 4h2v2h-2z"/>
+                            <path d="M5 1v2H3c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-2V1h-2v2H7V1H5zM3 7h18v12H3V7z"/>
+                        </svg>
+                    </div>
+                    <h3>Bespoke Furniture</h3>
+                    <p>Handcrafted furniture designed and manufactured in our decades-old manufacturing unit with modern technology.</p>
+                    <div class="service-details">
+                        <ul>
+                            <li>Custom-designed furniture pieces</li>
+                            <li>Premium materials & finishes</li>
+                            <li>Expert craftsmanship</li>
+                            <li>Tailored to your space</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="currentColor" width="32" height="32">
+                            <path d="M21 6H3c-1.1 0-2 .9-2 2v8c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm0 10H3V8h18v8zM4 9h2v2H4zm0 3h2v2H4zm3-3h2v2H7zm0 3h2v2H7z"/>
+                        </svg>
+                    </div>
+                    <h3>3D Design</h3>
+                    <p>Comprehensive 3D visualization and design services to bring your vision to life before execution.</p>
+                    <div class="service-details">
+                        <ul>
+                            <li>Photorealistic 3D renderings</li>
+                            <li>Virtual walkthroughs</li>
+                            <li>Design revisions & approvals</li>
+                            <li>Material & color selections</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="currentColor" width="32" height="32">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                        </svg>
+                    </div>
+                    <h3>Single Point Contact</h3>
+                    <p>One dedicated team handling all aspects - no need to coordinate with multiple vendors and contractors.</p>
+                    <div class="service-details">
+                        <ul>
+                            <li>Dedicated project manager</li>
+                            <li>Streamlined communication</li>
+                            <li>Coordinated vendor management</li>
+                            <li>Simplified approval process</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="currentColor" width="32" height="32">
+                            <path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"/>
+                            <path d="M12.5 7H11v6l5.25 3.15.75-1.23-4.5-2.67z"/>
+                        </svg>
+                    </div>
+                    <h3>Timely Delivery</h3>
+                    <p>Committed to completing projects on time and within budget while maintaining exceptional quality.</p>
+                    <div class="service-details">
+                        <ul>
+                            <li>Project timeline adherence</li>
+                            <li>Budget management</li>
+                            <li>Quality checkpoints</li>
+                            <li>Progress tracking & updates</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="currentColor" width="32" height="32">
+                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                        </svg>
+                    </div>
+                    <h3>Space Functionality</h3>
+                    <p>Optimizing zoning, circulation, lighting, and storage for maximum functionality and aesthetic appeal.</p>
+                    <div class="service-details">
+                        <ul>
+                            <li>Optimal space utilization</li>
+                            <li>Smart storage solutions</li>
+                            <li>Natural lighting optimization</li>
+                            <li>Flow & circulation planning</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="projects" id="projects">
+        <div class="container">
+            <h2 class="section-title fade-in">Featured Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card fade-in">
+                    <div class="project-image">Trump Tower Project</div>
+                    <div class="project-info">
+                        <h3>Trump Tower</h3>
+                        <p class="project-location">Gurugram</p>
+                        <p>3,500 sq. ft. residence exemplifying understated luxury with contemporary design elements and premium finishes.</p>
+                    </div>
+                </div>
+                <div class="project-card fade-in">
+                    <div class="project-image">Unity Amaryllis Project</div>
+                    <div class="project-info">
+                        <h3>Unity Amaryllis</h3>
+                        <p class="project-location">Muradabad</p>
+                        <p>Spanning 14,000 sq. ft., reflecting modern contemporary aesthetics with high-end materials and sophisticated design.</p>
+                    </div>
+                </div>
+                <div class="project-card fade-in">
+                    <div class="project-image">Lee Road Project</div>
+                    <div class="project-info">
+                        <h3>24 Lee Road</h3>
+                        <p class="project-location">Kolkata</p>
+                        <p>2,500 sq. ft. residence celebrating timeless English elegance with graceful positioning and classic design elements.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="container">
+            <h2 class="section-title fade-in">What Our Clients Say</h2>
+            <div class="testimonial-grid">
+                <div class="testimonial-card fade-in">
+                    <p class="testimonial-text">"I'm genuinely impressed with the quality. The design, craftsmanship, and materials always feel thoughtful and premium — I absolutely love everything!"</p>
+                    <p class="testimonial-author">— Satisfied Client</p>
+                </div>
+                <div class="testimonial-card fade-in">
+                    <p class="testimonial-text">"Super-cali-fragilistic-expialidocious! That's how I'd describe our experience with DSI Interiors. Their attention to detail, stunning furniture, and flawless interiors truly exceeded expectations."</p>
+                    <p class="testimonial-author">— Happy Homeowner</p>
+                </div>
+                <div class="testimonial-card fade-in">
+                    <p class="testimonial-text">"The design, materials, and service are always top-notch. They've never let me down — which is why I keep coming back every time I need something for my home."</p>
+                    <p class="testimonial-author">— Repeat Client</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer" id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>
+                        <img src="https://dsiinterior.com/wp-content/uploads/2025/08/cropped-cropped-1195329_20230629150757-removebg-preview-1.png" alt="DSI Interiors Logo" style="height: 30px; margin-right: 10px; vertical-align: middle;">
+                        DSI Interiors
+                    </h3>
+                    <p>Crafting timeless luxury with bespoke design, premium craftsmanship, and unparalleled expertise in interior design.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <p>D-99, Pocket D, Okhla Phase I<br>
+                    Okhla Industrial Estate<br>
+                    South Delhi, New Delhi, 110020 India</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Services</h3>
+                    <p>Turnkey Projects<br>
+                    Bespoke Furniture<br>
+                    3D Design<br>
+                    Space Planning</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <p>About Us<br>
+                    Gallery<br>
+                    Blog<br>
+                    Contact</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 DSI Interiors. All rights reserved. | Designed with excellence and crafted with passion.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Scroll animations
+        function handleScrollAnimations() {
+            const elements = document.querySelectorAll('.fade-in');
+            
+            elements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < window.innerHeight - elementVisible) {
+                    element.classList.add('visible');
+                }
+            });
+        }
+
+        // Navbar scroll effect
+        function handleNavbarScroll() {
+            const navbar = document.querySelector('.navbar');
+            const scrollIndicator = document.querySelector('.scroll-indicator');
+            const scrollProgress = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight);
+            
+            // Update scroll indicator
+            scrollIndicator.style.transform = `scaleX(${scrollProgress})`;
+            
+            if (window.scrollY > 100) {
+                navbar.style.background = 'rgba(1, 68, 33, 0.98)';
+                navbar.style.boxShadow = '0 8px 32px rgba(0, 0, 0, 0.3)';
+            } else {
+                navbar.style.background = 'rgba(1, 68, 33, 0.95)';
+                navbar.style.boxShadow = '0 4px 32px rgba(0, 0, 0, 0.2)';
+            }
+        }
+
+        // Smooth scrolling
+        function initSmoothScrolling() {
+            const links = document.querySelectorAll('a[href^="#"]');
+            
+            links.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href').substring(1);
+                    const targetElement = document.getElementById(targetId);
+                    
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        }
+
+        // Hero slideshow
+        function initSlideshow() {
+            const slides = document.querySelectorAll('.hero-slide');
+            let currentSlide = 0;
+            
+            function showNextSlide() {
+                slides[currentSlide].classList.remove('active');
+                currentSlide = (currentSlide + 1) % slides.length;
+                slides[currentSlide].classList.add('active');
+            }
+            
+            // Change slide every 4 seconds
+            setInterval(showNextSlide, 4000);
+        }
+
+        // Mobile menu functions
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            const menuIcon = document.getElementById('menu-icon');
+            
+            if (mobileMenu.classList.contains('active')) {
+                mobileMenu.classList.remove('active');
+                menuIcon.innerHTML = '☰';
+            } else {
+                mobileMenu.classList.add('active');
+                menuIcon.innerHTML = '✕';
+            }
+        }
+
+        function closeMobileMenu() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            const menuIcon = document.getElementById('menu-icon');
+            mobileMenu.classList.remove('active');
+            menuIcon.innerHTML = '☰';
+        }
+
+        // Initialize everything
+        document.addEventListener('DOMContentLoaded', function() {
+            initSmoothScrolling();
+            initSlideshow();
+            handleScrollAnimations();
+            handleNavbarScroll();
+        });
+
+        window.addEventListener('scroll', function() {
+            handleScrollAnimations();
+            handleNavbarScroll();
+        });
+    </script>
+</body>
+</html>
 
